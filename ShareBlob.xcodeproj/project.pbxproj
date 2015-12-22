@@ -14,6 +14,9 @@
 		70D70D651C296CCA00B4C09E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70D70D631C296CCA00B4C09E /* LaunchScreen.storyboard */; };
 		70D70D701C296CCA00B4C09E /* ShareBlobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D70D6F1C296CCA00B4C09E /* ShareBlobTests.swift */; };
 		70D70D7B1C296CCA00B4C09E /* ShareBlobUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D70D7A1C296CCA00B4C09E /* ShareBlobUITests.swift */; };
+		70D70D8F1C29705800B4C09E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D70D8E1C29705800B4C09E /* ShareViewController.swift */; };
+		70D70D921C29705800B4C09E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70D70D901C29705800B4C09E /* MainInterface.storyboard */; };
+		70D70D961C29705800B4C09E /* Blob.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 70D70D8C1C29705800B4C09E /* Blob.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +34,28 @@
 			remoteGlobalIDString = 70D70D561C296CCA00B4C09E;
 			remoteInfo = ShareBlob;
 		};
+		70D70D941C29705800B4C09E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 70D70D4F1C296CCA00B4C09E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70D70D8B1C29705800B4C09E;
+			remoteInfo = Blob;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		70D70D9A1C29705800B4C09E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				70D70D961C29705800B4C09E /* Blob.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		70D70D571C296CCA00B4C09E /* ShareBlob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareBlob.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +71,10 @@
 		70D70D761C296CCA00B4C09E /* ShareBlobUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareBlobUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D70D7A1C296CCA00B4C09E /* ShareBlobUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBlobUITests.swift; sourceTree = "<group>"; };
 		70D70D7C1C296CCA00B4C09E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70D70D8C1C29705800B4C09E /* Blob.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Blob.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		70D70D8E1C29705800B4C09E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		70D70D911C29705800B4C09E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		70D70D931C29705800B4C09E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +99,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		70D70D891C29705800B4C09E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +115,7 @@
 				70D70D591C296CCA00B4C09E /* ShareBlob */,
 				70D70D6E1C296CCA00B4C09E /* ShareBlobTests */,
 				70D70D791C296CCA00B4C09E /* ShareBlobUITests */,
+				70D70D8D1C29705800B4C09E /* Blob */,
 				70D70D581C296CCA00B4C09E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +126,7 @@
 				70D70D571C296CCA00B4C09E /* ShareBlob.app */,
 				70D70D6B1C296CCA00B4C09E /* ShareBlobTests.xctest */,
 				70D70D761C296CCA00B4C09E /* ShareBlobUITests.xctest */,
+				70D70D8C1C29705800B4C09E /* Blob.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +162,16 @@
 			path = ShareBlobUITests;
 			sourceTree = "<group>";
 		};
+		70D70D8D1C29705800B4C09E /* Blob */ = {
+			isa = PBXGroup;
+			children = (
+				70D70D8E1C29705800B4C09E /* ShareViewController.swift */,
+				70D70D901C29705800B4C09E /* MainInterface.storyboard */,
+				70D70D931C29705800B4C09E /* Info.plist */,
+			);
+			path = Blob;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,10 +182,12 @@
 				70D70D531C296CCA00B4C09E /* Sources */,
 				70D70D541C296CCA00B4C09E /* Frameworks */,
 				70D70D551C296CCA00B4C09E /* Resources */,
+				70D70D9A1C29705800B4C09E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				70D70D951C29705800B4C09E /* PBXTargetDependency */,
 			);
 			name = ShareBlob;
 			productName = ShareBlob;
@@ -181,6 +230,23 @@
 			productReference = 70D70D761C296CCA00B4C09E /* ShareBlobUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		70D70D8B1C29705800B4C09E /* Blob */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70D70D971C29705800B4C09E /* Build configuration list for PBXNativeTarget "Blob" */;
+			buildPhases = (
+				70D70D881C29705800B4C09E /* Sources */,
+				70D70D891C29705800B4C09E /* Frameworks */,
+				70D70D8A1C29705800B4C09E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Blob;
+			productName = Blob;
+			productReference = 70D70D8C1C29705800B4C09E /* Blob.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -203,6 +269,10 @@
 						CreatedOnToolsVersion = 7.2;
 						TestTargetID = 70D70D561C296CCA00B4C09E;
 					};
+					70D70D8B1C29705800B4C09E = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 9VY96EP5WH;
+					};
 				};
 			};
 			buildConfigurationList = 70D70D521C296CCA00B4C09E /* Build configuration list for PBXProject "ShareBlob" */;
@@ -221,6 +291,7 @@
 				70D70D561C296CCA00B4C09E /* ShareBlob */,
 				70D70D6A1C296CCA00B4C09E /* ShareBlobTests */,
 				70D70D751C296CCA00B4C09E /* ShareBlobUITests */,
+				70D70D8B1C29705800B4C09E /* Blob */,
 			);
 		};
 /* End PBXProject section */
@@ -247,6 +318,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70D70D8A1C29705800B4C09E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70D70D921C29705800B4C09E /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +357,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		70D70D881C29705800B4C09E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70D70D8F1C29705800B4C09E /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -290,6 +377,11 @@
 			isa = PBXTargetDependency;
 			target = 70D70D561C296CCA00B4C09E /* ShareBlob */;
 			targetProxy = 70D70D771C296CCA00B4C09E /* PBXContainerItemProxy */;
+		};
+		70D70D951C29705800B4C09E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 70D70D8B1C29705800B4C09E /* Blob */;
+			targetProxy = 70D70D941C29705800B4C09E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -308,6 +400,14 @@
 				70D70D641C296CCA00B4C09E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		70D70D901C29705800B4C09E /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				70D70D911C29705800B4C09E /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -401,6 +501,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ShareBlob/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.nickcharlton.ShareBlob;
@@ -413,6 +514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ShareBlob/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.nickcharlton.ShareBlob;
@@ -468,6 +570,30 @@
 			};
 			name = Release;
 		};
+		70D70D981C29705800B4C09E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Blob/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.nickcharlton.ShareBlob.Blob;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		70D70D991C29705800B4C09E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Blob/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.nickcharlton.ShareBlob.Blob;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -501,6 +627,14 @@
 			buildConfigurations = (
 				70D70D861C296CCA00B4C09E /* Debug */,
 				70D70D871C296CCA00B4C09E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		70D70D971C29705800B4C09E /* Build configuration list for PBXNativeTarget "Blob" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70D70D981C29705800B4C09E /* Debug */,
+				70D70D991C29705800B4C09E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
