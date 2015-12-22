@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
     override func isContentValid() -> Bool {
@@ -16,8 +17,25 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
     override func didSelectPost() {
-        // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
-    
+        // this is the content written in the text box
+        print("contentText: \(contentText)")
+
+        // now pull out the url
+        let extensionItems = extensionContext?.inputItems
+        if extensionItems?.count > 0 {
+            let item  = extensionItems![0] as! NSExtensionItem
+            let attachments = item.attachments
+
+            if let urlProvider = attachments![0] as? NSItemProvider {
+                urlProvider.loadItemForTypeIdentifier("public.url", options: nil, completionHandler: {
+                    (result: NSSecureCoding?, error: NSError!) -> Void in
+                    if let url = result as? NSURL {
+                        print(url)
+                    }
+                })
+            }
+        }
+
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
         self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
     }
