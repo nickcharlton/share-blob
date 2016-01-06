@@ -11,6 +11,24 @@ import Social
 import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
+    var operationQueue: dispatch_queue_t = dispatch_queue_create("operationQueue", nil)
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        dispatch_async(operationQueue) { () -> Void in
+            var grabbedUrl = ""
+
+            while grabbedUrl.isEmpty {
+                self.fetchURL({ (url) -> Void in
+                    grabbedUrl = url.absoluteString
+                })
+            }
+
+            print(grabbedUrl)
+        }
+    }
+
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
         return true
@@ -21,19 +39,8 @@ class ShareViewController: SLComposeServiceViewController {
         print("contentText: \(contentText)")
 
         // now pull out the url
-        let extensionItems = extensionContext?.inputItems
-        if extensionItems?.count > 0 {
-            let item  = extensionItems![0] as! NSExtensionItem
-            let attachments = item.attachments
-
-            if let urlProvider = attachments![0] as? NSItemProvider {
-                urlProvider.loadItemForTypeIdentifier("public.url", options: nil, completionHandler: {
-                    (result: NSSecureCoding?, error: NSError!) -> Void in
-                    if let url = result as? NSURL {
-                        print(url)
-                    }
-                })
-            }
+        fetchURL { (url) -> Void in
+            print(url)
         }
 
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
@@ -43,5 +50,22 @@ class ShareViewController: SLComposeServiceViewController {
     override func configurationItems() -> [AnyObject]! {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
         return []
+    }
+
+    func fetchURL(completionHandler: (url: NSURL) -> Void) {
+        let extensionItems = extensionContext?.inputItems
+        if extensionItems?.count > 0 {
+            let item  = extensionItems![0] as! NSExtensionItem
+            let attachments = item.attachments
+
+            if let urlProvider = attachments![0] as? NSItemProvider {
+                urlProvider.loadItemForTypeIdentifier("public.url", options: nil, completionHandler: {
+                    (result: NSSecureCoding?, error: NSError!) -> Void in
+                    if let url = result as? NSURL {
+                        completionHandler(url: url)
+                    }
+                })
+            }
+        }
     }
 }
