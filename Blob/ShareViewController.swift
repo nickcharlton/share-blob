@@ -23,8 +23,6 @@ class ShareViewController: SLComposeServiceViewController {
         }
       }
 
-      print(grabbedUrl)
-
       dispatch_async(dispatch_get_main_queue()) {
         let originalContent = self.textView.text
         self.textView.text = "“\(originalContent)” — \(grabbedUrl)"
