@@ -11,38 +11,48 @@ import Social
 import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
+  var fetchedURL: String = ""
+
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-      var grabbedUrl = ""
-
-      while grabbedUrl.isEmpty {
+      while self.fetchedURL.isEmpty {
         self.fetchURL { url in
-          grabbedUrl = url.absoluteString
+          self.fetchedURL = url.absoluteString
         }
       }
 
       dispatch_async(dispatch_get_main_queue()) {
         let originalContent = self.textView.text
-        self.textView.text = "“\(originalContent)” — \(grabbedUrl)"
+        self.textView.text = "“\(originalContent)” — \(self.fetchedURL)"
+        self.validateContent() // we must revalidate once we've updated the content
       }
     }
   }
 
   override func isContentValid() -> Bool {
-    // Do validation of contentText and/or NSExtensionContext attachments here
+    if !fetchedURL.isEmpty {
+      let contentWithoutURL = contentText.stringByReplacingOccurrencesOfString(self.fetchedURL, withString: "")
+
+      // a URL requires 23 characters on Twitter
+      charactersRemaining = 140 - (contentWithoutURL.characters.count + 23)
+    }
+
+    if (charactersRemaining != nil) {
+      if Int(charactersRemaining) >= 0 {
+        return true
+      } else {
+        return false
+      }
+    }
+
     return true
   }
 
   override func didSelectPost() {
     // this is the content written in the text box
     print("contentText: \(contentText)")
-
-    // now pull out the url
-    fetchURL { url in
-      print(url)
-    }
 
     // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
     self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
