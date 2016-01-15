@@ -16,11 +16,11 @@ class ShareViewController: SLComposeServiceViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        dispatch_async(operationQueue) { () -> Void in
+        dispatch_async(operationQueue) {
             var grabbedUrl = ""
 
             while grabbedUrl.isEmpty {
-                self.fetchURL({ (url) -> Void in
+                self.fetchURL({ url in
                     grabbedUrl = url.absoluteString
                 })
             }
@@ -39,7 +39,7 @@ class ShareViewController: SLComposeServiceViewController {
         print("contentText: \(contentText)")
 
         // now pull out the url
-        fetchURL { (url) -> Void in
+        fetchURL { url in
             print(url)
         }
 
@@ -59,8 +59,7 @@ class ShareViewController: SLComposeServiceViewController {
             let attachments = item.attachments
 
             if let urlProvider = attachments![0] as? NSItemProvider {
-                urlProvider.loadItemForTypeIdentifier("public.url", options: nil, completionHandler: {
-                    (result: NSSecureCoding?, error: NSError!) -> Void in
+                urlProvider.loadItemForTypeIdentifier("public.url", options: nil, completionHandler: { result, error in
                     if let url = result as? NSURL {
                         completionHandler(url: url)
                     }
