@@ -11,21 +11,24 @@ import Social
 import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
-  var operationQueue: dispatch_queue_t = dispatch_queue_create("operationQueue", nil)
-
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
 
-    dispatch_async(operationQueue) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
       var grabbedUrl = ""
 
       while grabbedUrl.isEmpty {
-        self.fetchURL({ url in
+        self.fetchURL { url in
           grabbedUrl = url.absoluteString
-        })
+        }
       }
 
       print(grabbedUrl)
+
+      dispatch_async(dispatch_get_main_queue()) {
+        let originalContent = self.textView.text
+        self.textView.text = "“\(originalContent)” — \(grabbedUrl)"
+      }
     }
   }
 
